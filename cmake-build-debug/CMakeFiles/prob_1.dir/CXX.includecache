@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/somang/CLionProjects/prob_solving/week1_prob2.cpp
+/Users/somang/CLionProjects/prob_solving/week3_prob1.cpp
 iostream
 -
-vector
+queue
 -
 

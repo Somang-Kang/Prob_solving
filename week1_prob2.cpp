@@ -4,9 +4,12 @@
 
 #include <iostream>
 #include <vector>
+#include <time.h>
 using namespace std;
 
 int main(){
+
+
     int testcase;
     cin>>testcase;
     while(testcase--){
@@ -15,7 +18,6 @@ int main(){
         vector<int> block_vec;
         int min = 0;
         int max = 0;
-
         while(qnum--){
             int number;
             cin>>number;
@@ -46,4 +48,5 @@ int main(){
             }
         }
     }
+
 }
