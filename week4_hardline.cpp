@@ -76,7 +76,7 @@ int main(){
                 cout<<4<<endl;
                 continue;
             }
-            //L2가 길 때,
+                //L2가 길 때,
             else if(L2.y1 <= L1.y1 && L2.y2>=L1.y2){
                 cout<<4<<endl;
                 continue;
