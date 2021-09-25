@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/somang/CLionProjects/prob_solving/week4_easyline.cpp
+/Users/somang/CLionProjects/prob_solving/week3_prob1.cpp
 iostream
+-
+string
+-
+vector
 -
 
