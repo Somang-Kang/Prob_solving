@@ -4,10 +4,6 @@
 #include <iostream>
 using namespace std;
 
-int gcd(int a, int b) {
-    if (a % b == 0) return b;
-    else return gcd(b, a % b);
-}
 
 int main(){
     int testcase;
@@ -15,25 +11,38 @@ int main(){
     while(testcase--){
         int A,B,x,y;
         cin>>A>>B>>x>>y;
-        int x_result = 1;
+        int gcd = 0;
         int x_cost = 0;
-        while(x_result == 1) {
-            x_result = gcd(A,B);
-            x_cost += x;
-            A+=1; B+=1;
-        }
-        int y_result = 1;
         int y_cost = 0;
-        while(y_result == 1) {
-            y_result = gcd(A,B);
-            y_cost += x;
-            A-=1; B-=1;
+        int y_result = 1;
+        int gap = abs(A-B);
+        if(B<A) {
+            int tmp = A;
+            A = B;
+            B = tmp;
         }
-        if(x_cost>y_cost){
-            cout<<y_result<<" "<<y_cost<<endl;
+        gcd = gap;
+        int a = A;
+        int b = B;
+        while(a%gcd != 0){
+            a+=1;
+            b+=1;
+            x_cost += x;
+        }
+
+        while(A%gcd != 0){
+            A-=1;
+            B-=1;
+            y_cost += y;
+            if(A<1 || B<1) {y_result = 0; break;}
+        }
+
+        if(x_cost>y_cost && y_result != 0){
+            cout<<gcd<<" "<<y_cost<<endl;
         }
         else{
-            cout<<x_result<<" "<<x_cost<<endl;
+            cout<<gcd<<" "<<x_cost<<endl;
         }
+
     }
 }
