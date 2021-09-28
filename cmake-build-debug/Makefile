@@ -143,32 +143,32 @@ prob_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/build
 .PHONY : prob_1/fast
 
-week4_prob1.o: week4_prob1.cpp.o
+week3_prob2.o: week3_prob2.cpp.o
 
-.PHONY : week4_prob1.o
+.PHONY : week3_prob2.o
 
 # target to build an object file
-week4_prob1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/week4_prob1.cpp.o
-.PHONY : week4_prob1.cpp.o
+week3_prob2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/week3_prob2.cpp.o
+.PHONY : week3_prob2.cpp.o
 
-week4_prob1.i: week4_prob1.cpp.i
+week3_prob2.i: week3_prob2.cpp.i
 
-.PHONY : week4_prob1.i
+.PHONY : week3_prob2.i
 
 # target to preprocess a source file
-week4_prob1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/week4_prob1.cpp.i
-.PHONY : week4_prob1.cpp.i
+week3_prob2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/week3_prob2.cpp.i
+.PHONY : week3_prob2.cpp.i
 
-week4_prob1.s: week4_prob1.cpp.s
+week3_prob2.s: week3_prob2.cpp.s
 
-.PHONY : week4_prob1.s
+.PHONY : week3_prob2.s
 
 # target to generate assembly for a file
-week4_prob1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/week4_prob1.cpp.s
-.PHONY : week4_prob1.cpp.s
+week3_prob2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prob_1.dir/build.make CMakeFiles/prob_1.dir/week3_prob2.cpp.s
+.PHONY : week3_prob2.cpp.s
 
 # Help Target
 help:
@@ -179,9 +179,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... prob_1"
-	@echo "... week4_prob1.o"
-	@echo "... week4_prob1.i"
-	@echo "... week4_prob1.s"
+	@echo "... week3_prob2.o"
+	@echo "... week3_prob2.i"
+	@echo "... week3_prob2.s"
 .PHONY : help
 
 
