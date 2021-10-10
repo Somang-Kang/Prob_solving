@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/somang/CLionProjects/prob_solving/week5_prob1.cpp">
+		<Unit filename="/Users/somang/CLionProjects/prob_solving/week6_prob2.cpp">
 			<Option target="prob_1"/>
 		</Unit>
 		<Unit filename="/Users/somang/CLionProjects/prob_solving/CMakeLists.txt">

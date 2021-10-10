@@ -13,79 +13,58 @@ int main(){
         int num;
         int iter = 0;
         int hzsize = 0;
-        vector<int> rightVec;
-        vector<int> allVec;
+        vector<int> addVec;
         vector<int> realVec;
         cin >> num;
         for (int i = 0; i < num; i++) {
             int hz;
             cin >> hz;
-            allVec.push_back(hz);
-            rightVec.push_back(hz);
-            hzsize++;
-            if (allVec.size() > 1) {
-                if (allVec[iter] == hz) {
-                    rightVec.pop_back();
-                    hzsize--;
-                    iter++;
-                }
-                else{
-                    for (int j = hzsize-1; j < allVec.size(); j++) {
-                        if(j == (hzsize-1)){
-                            rightVec.pop_back();
-                        }
-                        rightVec.push_back(allVec[j]);
-                    }
-                }
-            }
-        }
-            /*if(allVec.size()>1 && allVec[iter] == hz){
-                if(rightVec.size()!=0 && rightVec.size() == allVec.size()/2 || rightVec.size() == realVec.size() && rightVec.size()!=0) {
-                    for(int j = 0;j<rightVec.size();j++){
-                        realVec.push_back(rightVec[j]);
-                    }
-                    iter = 0;
-                    rightVec.clear();
-                    continue;
-                }
-                rightVec.push_back(hz);
-                iter++;
-            }
-            else if(rightVec.size() != 0){
-
-                rightVec.clear();
-                realVec.clear();
+            if (i == 0) {
+                realVec.push_back(hz);
                 iter = 0;
-                if(allVec[iter] == hz){
-                    rightVec.push_back(hz);
-                    iter++;
+            } else {
+                if (hz == realVec[iter]) {
+                    addVec.push_back(hz);
+                    if (addVec.size() % realVec.size() == 0) {
+                        iter = 0;
+                    } else {
+                        iter++;
+                    }
+
+                } else {
+                    if (addVec.size() == 0) realVec.push_back(hz);
+                    else {
+                        for (int j = 0; j < addVec.size(); j++) {
+                            realVec.push_back(addVec[j]);
+                        }
+                        //if(i == num-1 && hz!=realVec[0]) realVec.push_back(hz);
+                        addVec.clear();
+                        if (realVec[0] == hz) {
+                            addVec.push_back(hz);
+                            iter = 1;
+                        }
+                        else{
+                            realVec.push_back(hz);
+                            iter = 0;
+                        }
+
+                    }
                 }
             }
-            else{
+        }
+        int recur = realVec[0];
+        int k = 0;
+        while(realVec[k]==recur){
+            k++;
+        }
+        for(int s = 1;s<k;s++){
+            if(realVec.back() == recur){
+                realVec.pop_back();
             }
         }
-
-        if(realVec.size() == 0){
-            for(int j = 0;j<allVec.size();j++){
-                cout<<allVec[j]<<" ";
-            }
+        for(int i = 0;i<realVec.size();i++){
+            cout<<realVec[i]<<" ";
         }
-        else{
-            for(int j = 0;j<realVec.size();j++){
-                cout<<realVec[j]<<" ";
-            }
-        }*/
-        if(hzsize == allVec.size()){
-            for(int j =0;j<allVec.size();j++){
-                cout<<allVec[j]<<" ";
-            }
-            cout<<endl;
-        }
-        else{
-            for(int j =0;j<rightVec.size();j++){
-                cout<<rightVec[j]<<" ";
-            }
-            cout<<endl;
-        }
+        cout<<endl;
     }
 }
