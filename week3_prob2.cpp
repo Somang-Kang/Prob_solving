@@ -6,57 +6,33 @@
 #include <vector>
 using namespace std;
 int map[2001][2001];
-
-
-class DFSClass{
-public:
-    vector<int> branch;
-    vector<int> neighbors[2001];
-
-    bool visited[2001] = {false,};
-    int maxDis;
-    int curmax;
-    int firstmax;
-    int secondmax;
-    DFSClass(){
-        maxDis = 0;
-        curmax = 0;
-        int firstmax = 0;
-        int secondmax;
-    }
-
-    void setInit(){
-        maxDis = 0;
-        curmax = 0;
-        int firstmax = 0;
-        int secondmax = 0;
-    }
-
-    void DFS(int x){
-        visited[x]=true;
-        for(int i =0;i<neighbors[x].size();i++){
-            int cur = neighbors[x][i];
-            if(visited[cur] == false){
-                curmax += map[x][cur];
-                DFS(neighbors[x][i]);
-            }
-            branch.push_back(curmax);
-            cout<<"cur is "<<curmax<<endl;
-            if(curmax>=firstmax) {
-                //secondmax = firstmax;
-                firstmax = curmax;
-            }
-            /*else if(curmax>secondmax){
-                secondmax = curmax;
-            }*/
-            curmax = curmax - map[x][cur];
+bool visited[2001] = {false,};
+vector<int> branch;
+vector<int> neighbors[2001];
+int maxDis =0;
+int curmax=0;
+int firstmax=0;
+int secondmax=0;
+void DFS(int x){
+    visited[x]=true;
+    for(int i =0;i<neighbors[x].size();i++){
+        int cur = neighbors[x][i];
+        if(visited[cur] == false){
+            curmax += map[x][cur];
+            DFS(neighbors[x][i]);
         }
+        branch.push_back(curmax);
+        cout<<"cur is "<<curmax<<endl;
+        if(curmax>=firstmax) {
+            //secondmax = firstmax;
+            firstmax = curmax;
+        }
+        /*else if(curmax>secondmax){
+            secondmax = curmax;
+        }*/
+        curmax = curmax - map[x][cur];
     }
-
-
-
-
-};
+}
 
 int main(){
     int testcase;

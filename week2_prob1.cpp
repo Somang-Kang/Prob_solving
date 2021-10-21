@@ -4,10 +4,8 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <queue>
 using namespace std;
-int visited[] = {false,};
-
 
 
 
@@ -15,82 +13,51 @@ int main(){
     int testcase;
     cin>>testcase;
     while(testcase--){
-        vector<string> rightVec;
+        queue<string> rightVec;
         int studentNum,wordNum;
         cin>>studentNum>>wordNum;
         while(wordNum--){
             string word;
             cin>>word;
-            rightVec.push_back(word);
+            rightVec.push(word);
         }
-
-        vector<vector<string>> stud_vec;
-        for(int order = 0;order<studentNum;order++){
+        int tot_word;
+        queue<string> stud_vec[1000];
+        for(int k = 0;k<studentNum;k++){
             int wNum;
             cin>>wNum;
             for(int i = 0;i<wNum;i++){
                 string word;
                 cin>>word;
-                stud_vec[order].push_back(word);
+                stud_vec[k].push(word);
             }
+            tot_word += wNum;
         }
 
-        int rightOrder = 0;
-        for(int y=0;x<stud_vec.size();x++){
-            for(int x=0;y<stud_vec[x].size();y++){
-                if(stud_vec[x][y] == rightVec[rightOrder]){
-                    rightOrder++;
-                    continue;
+            for (int j = 0; j < studentNum; j++) {
+                if(rightVec.empty()) {cout<< 1<<endl; break;}
+                if (stud_vec[j].front() == rightVec.front()) {
+                    stud_vec[j].pop();
+                    rightVec.pop();
+                    j = -1;
                 }
-                else {
-                    x--;
-
-                }
-
+                if (j == studentNum - 1) cout<<0<<endl;
             }
-        }
 
-        int x,y = 0;
-        if(stud_vec[x][y] == rightVec[rightOrder]){
-            stud_vec[x][y] = '0';
-            if(x가 범위 넘지 않으면) x+1;
-            else y+1;
-        }
+            //if(rightVec.empty()) cout << 1;
 
 
 
-
-        //x초과
-        if(x == stud_vec.size()) {
-            x = 0;
-            //y차례
-            y += 1;
-            if(stud_vec[x][y] == rightVec[rightOrder]){
-                continue;
+            /*if(stud_vec[i-1].front() == rightVec.front()){
+                stud_vec[i-1].pop();
+                if(rightVec.empty()) cout<<1<<" "; break;
             }
-            x++;
-        }
-
-        //y초과
-        if(y == stud_vec[x].size()){
-
-        }
-
-        //x차례
-
-        else if (y == stud_vec[x].size()){
-
-        }
-
-        else if(){
-            x +- 1;
-        }
+            else if(studentNum%i == 0){
+                cout<<0<<" ";
+                break;
+            }*/
 
 
-
-
-            if(rightOrder-1 == rightVec.size()) cout<<0;
-        }
 
 
     }

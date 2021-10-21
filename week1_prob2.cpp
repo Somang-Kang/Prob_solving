@@ -1,50 +1,43 @@
+
 //
 // Created by 강소망 on 2021/09/03.
 //
 
 #include <iostream>
 #include <vector>
-#include <time.h>
 using namespace std;
 
 int main(){
-
-
     int testcase;
     cin>>testcase;
     while(testcase--){
         int qnum;
         cin>>qnum;
-        vector<int> block_vec;
-        int min = 0;
-        int max = 0;
+        vector<int> min_vec;
+        vector<int> max_vec;
+        vector<int> tot_vec;
+
         while(qnum--){
             int number;
             cin>>number;
             if(number == 1){
                 int num;
                 cin>>num;
-                if(block_vec.size()==0){min = num;max = num;}
-                else{
-                    if(num>max) max = num;
-                    if(num<min) min = num;
+                if(tot_vec.size()==0){min_vec.push_back(num); max_vec.push_back(num);}
+                else {
+                    if (num >= max_vec.back()) max_vec.push_back(num);
+                    if (num <= min_vec.back()) min_vec.push_back(num);
                 }
-                block_vec.push_back(num);
-                cout<<min<<" "<<max<<"\n";
+                tot_vec.push_back(num);
+                cout<<min_vec.back()<<" "<<max_vec.back()<<"\n";
             }
-            else if (number == 2){
-                if(block_vec.empty()) {}
+            else {
+                if(tot_vec.empty()) continue;
                 else{
-                    block_vec.pop_back();
-                    min = 1000;max=0;
-                    for(int i = 0;i<block_vec.size();i++){
-                        if(block_vec[i]<min) min = block_vec[i];
-                        if(block_vec[i]>max) max = block_vec[i];
-                    }
+                    if(min_vec.back() == tot_vec.back()) min_vec.pop_back();
+                    else if(max_vec.back() == tot_vec.back()) max_vec.pop_back();
+                    tot_vec.pop_back();
                 }
-            }
-            else{
-
             }
         }
     }
