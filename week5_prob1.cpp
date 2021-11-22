@@ -1,70 +1,44 @@
-//
-// Created by 강소망 on 2021/10/01.
-//
-
-#include <iostream>
-#include <vector>
+#include<iostream>
 using namespace std;
+void Hz() {
+    int n, x, cnt = 0;
+    int list[5000];
+    bool flag;
 
-int main(){
-    int testcase;
-    cin>>testcase;
-    while(testcase--) {
-        int num;
-        int iter = 0;
-        int hzsize = 0;
-        vector<int> addVec;
-        vector<int> realVec;
-        cin >> num;
-        for (int i = 0; i < num; i++) {
-            int hz;
-            cin >> hz;
-            if (i == 0) {
-                realVec.push_back(hz);
-                iter = 0;
-            } else {
-                if (hz == realVec[iter]) {
-                    addVec.push_back(hz);
-                    if (addVec.size() % realVec.size() == 0) {
-                        iter = 0;
-                    } else {
-                        iter++;
-                    }
+    cin >> n;
 
-                } else {
-                    if (addVec.size() == 0) realVec.push_back(hz);
-                    else {
-                        for (int j = 0; j < addVec.size(); j++) {
-                            realVec.push_back(addVec[j]);
-                        }
-                        //if(i == num-1 && hz!=realVec[0]) realVec.push_back(hz);
-                        addVec.clear();
-                        if (realVec[0] == hz) {
-                            addVec.push_back(hz);
-                            iter = 1;
-                        }
-                        else{
-                            realVec.push_back(hz);
-                            iter = 0;
-                        }
+    for (int i = 0; i < n; i++) {
+        cin >> x;
+        list[i] = x;
+    }
 
-                    }
-                }
+    for (int i = 1; i < n; i++) {
+        flag = true;
+        for (int j = 0; j < n - i; j++) {
+            if (list[j] != list[j + i]) {
+                flag = false;
+
+                if (i == n - 1)
+                    cnt++;
+
+                break;
             }
         }
-        int recur = realVec[0];
-        int k = 0;
-        while(realVec[k]==recur){
-            k++;
+        cnt++;
+
+        if (flag) {
+            break;
         }
-        for(int s = 1;s<k;s++){
-            if(realVec.back() == recur){
-                realVec.pop_back();
-            }
-        }
-        for(int i = 0;i<realVec.size();i++){
-            cout<<realVec[i]<<" ";
-        }
-        cout<<endl;
+    }
+    for (int i = 0; i < cnt; i++) {
+        cout << list[i] << " ";
+    }
+    cout << "\n";
+}
+int main() {
+    int t;
+    cin >> t;
+    for (int i = 0; i < t; i++) {
+        Hz();
     }
 }

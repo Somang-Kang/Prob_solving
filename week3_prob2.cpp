@@ -1,90 +1,63 @@
-//
-// Created by 강소망 on 2021/09/27.
-//
-
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector>
 using namespace std;
-int map[2001][2001];
-bool visited[2001] = {false,};
-vector<int> branch;
-vector<int> neighbors[2001];
-int maxDis =0;
-int curmax=0;
-int firstmax=0;
-int secondmax=0;
-void DFS(int x){
-    visited[x]=true;
-    for(int i =0;i<neighbors[x].size();i++){
-        int cur = neighbors[x][i];
-        if(visited[cur] == false){
-            curmax += map[x][cur];
-            DFS(neighbors[x][i]);
-        }
-        branch.push_back(curmax);
-        cout<<"cur is "<<curmax<<endl;
-        if(curmax>=firstmax) {
-            //secondmax = firstmax;
-            firstmax = curmax;
-        }
-        /*else if(curmax>secondmax){
-            secondmax = curmax;
-        }*/
-        curmax = curmax - map[x][cur];
-    }
+
+int T, N, answer;
+
+vector<pair<int,int>>* house;
+bool visited[2001] = { false, };
+int getMax(int a, int b) {
+    if (a > b)
+        return a;
+    else
+        return b;
 }
 
-int main(){
-    int testcase;
-    cin>>testcase;
-    while(testcase--){
-        DFSClass dfs;
-        int num;
+int treeSearch(int u) {
+    int max = 0, secondMax = 0;
+    int temp;
 
-        cin>>num;
-        int loop = num-1;
-        while(loop--){
-            int u,v,d;
-            cin>>u>>v>>d;
-            map[u][v]=d;
-            map[v][u]=d;
-            dfs.neighbors[u].push_back(v);
-            //neighbors[v].push_back(u);
+    visited[u] = true;
+    for (int i = 0; i < house[u].size(); i++) {
+        if (!visited[house[u][i].first]) {
+            temp = treeSearch(house[u][i].first) + house[u][i].second;
+            if (temp > max) {
+                int a;
+                a = max;
+                max = temp;
+                temp = a;
+            }
+            if (temp > secondMax) {
+                int a;
+                a = secondMax;
+                secondMax = temp;
+                temp = a;
+            }
         }
-        int branchmax = 0;
+    }
+    answer = getMax(answer, max + secondMax);
+    return max;
+}
 
-        int result = 0;
-        vector<int> maxVec;
-        for(int j=1;j<=num;j++){
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        cin >> N;
+        house = new vector<pair<int,int>>[N+1];
 
-            branchmax = 0;
-            dfs.DFS(j);
-            int size = dfs.branch.size();
-            int curResult = dfs.firstmax + dfs.secondmax;
-            if(result<curResult) result = curResult;
-            /*for(int i =0;i<size;i++){
-                cout<<i<<"is "<<dfs.branch[i]<<endl;
-                if(dfs.branch[i]>branchmax && firstmax!=dfs.branch[i]) {
-                    branchmax = dfs.branch[i];
-                }
-            }
-            if(j == 1){
-                firstmax = branchmax;
-            }
-            else{
-                if(branchmax>firstmax){
-                    secondmax = firstmax;
-                    firstmax = branchmax;
-                }
-            }
-            cout<<firstmax<<" "<<secondmax<<endl;*/
-            dfs.setInit();
+        int u, v, d;
+        for (int i = 1; i < N; i++) {
+            cin >> u >> v >> d;
+            house[u].push_back({ v,d });
+            house[v].push_back({ u,d });
         }
+        answer = 0;
+        for (int i = 0; i < 2001; i++) {
+            visited[i] = false;
+        }
+        treeSearch(1);
 
-        //cout<<firstmax<<" "<<secondmax<<endl;
-        //int result = firstmax+secondmax;
-        cout<<result;
-
-
+        cout << answer << "\n";
     }
 }
