@@ -3,49 +3,62 @@
 //
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <vector>
+
 using namespace std;
+int result;
+int cnt =0;
+int reverseV(int n){
+    string s = to_string(n);
+    reverse(s.begin(), s.end());
+    if(n<1000 &&n>99){
+        s.push_back('0');
+    }
+    else if(n<100&&n>9){
+        s.push_back('0');
+        s.push_back('0');
+    }
+    else if(n<10 && n>0){
+        s.push_back('0');
+        s.push_back('0');
+        s.push_back('0');
+    }
+
+
+    return atoi(s.c_str());
+}
+
+int RoomEscape(int n){
+    if(n==result){
+        return cnt;
+    }
+    int minusValue = n-1;
+    int plusValue = n+1;
+    int reverseValue = reverseV(n);
+    int value = abs(result-minusValue);
+    int returnValue = minusValue;
+    if(abs(result-plusValue)<value){
+        value = abs(result-plusValue);
+        returnValue = plusValue;
+    }
+    if(abs(result-reverseValue)<value){
+        returnValue = reverseValue;
+    }
+    cnt++;
+    RoomEscape(returnValue);
+
+}
 
 int main(){
     int tc;
     cin>>tc;
     while(tc--){
-        int min;
-        string start,dest;
-        cin>>start>>dest;
-        string t_start = start;
-        if(start.size()<4){
-            int a= 4-start.length();
-            for(int i = 0;i<a;i++){
-                start.insert(0,"0");
-            }
-        }
-        if(dest.size()<4){
-            int a= 4-dest.length();
-            for(int i = 0;i<a;i++){
-                dest.insert(0,"0");
-            }
-        }
-        if(start[0]==dest[0]){
-            //+,-해주
-        }
-        else if(abs((dest[0]-48)-(start[0]-48)) == abs((dest[0]-48)-(start[3]-48))){
-            if((start[0]-48)<(dest[0]-48)){
-                while(stoi(start)!=stoi(dest)){
-                    dest = to_string(stoi(dest)-1);
-                }
-            }
-            else{
+        int n;
+        cin>>n>>result;
 
-            }
-
-        }
-        else if(abs((dest[0]-48)-(start[0]-48)) < abs((dest[0]-48)-(start[3]-48))){
-
-        }
-        else{
-
-        }
-
+        RoomEscape(n);
+        cout<<cnt<<" ";
+        cnt =0;
     }
 }

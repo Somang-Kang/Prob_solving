@@ -5,33 +5,51 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+vector<int> v[101];
+
+
+class Ball{
+public:
+    bool isVisited[101] = {false,};
+    int cnt = -1;
+
+    void DFS(int n){
+        isVisited[n] = true;
+        cnt++;
+
+        for(int i =0;i<v[n].size();i++){
+            if(isVisited[v[n][i]]== false){
+                DFS(v[n][i]);
+            }
+        }
+    }
+
+};
+
+
 
 int main(){
     int tc;
+    cin>>tc;
     while(tc--){
         int N,M;
         cin>>N>>M;
-        int ballArr[101][101];
-        vector<int> arrSize(101);
         for(int i = 0;i<M;i++){
-            int a,b;
-            cin>>a>>b;
-            //a무게>b무게
-            if(arrSize[a] == NULL) arrSize[a] = 0;
-            else arrSize[a]++;
-            ballArr[a][arrSize[a]] = b;
-        }
-        for(int i =1;i<=M;i++){
-            for(int j = 1;j<= arrSize[j];j++){
-                if(arrSize[j]==0) break;
-                int it = j;
+            int n,m;
+            cin>>n>>m;
+            v[n].push_back(m);
 
-                while(arrSize[it]!=0){
-                    if(ballArr[i][it];
-                    j++;
-                }
-            }
+
         }
 
+        for(int i = 1;i<=N;i++){
+            Ball* ball = new Ball();
+            ball->DFS(i);
+            cout<<ball->cnt<<" ";
+        }
+        cout<<endl;
+        for(int i=1;i<N+1;i++){
+            v[i].clear();
+        }
     }
 }

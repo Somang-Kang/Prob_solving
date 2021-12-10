@@ -6,11 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/somang/CLionProjects/prob_solving/week12_prob2.cpp
+/Users/somang/CLionProjects/prob_solving/week10_prob1.cpp
 iostream
 -
-vector
+string
 -
 algorithm
+-
+vector
 -
 

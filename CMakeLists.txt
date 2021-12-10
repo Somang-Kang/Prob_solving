@@ -3,4 +3,4 @@ project(prob_1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(prob_1 week12_prob2.cpp)
+add_executable(prob_1 week10_prob1.cpp)
