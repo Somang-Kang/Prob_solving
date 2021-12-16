@@ -3,38 +3,51 @@
 //
 
 #include <iostream>
-#include <vector>
 #include<cmath>
-#include <algorithm>
-
+#include <queue>
 using namespace std;
-long long X,N,M;
 
-GeoSeries(long long x,long long n){
-    if(n==1){
-        return x%M,x%M;
+struct Info{
+    double dist;
+    int x;
+    int y;
+    Info(double dist,int x,int y){
+        this->dist=dist;
+        this->x=x;
+        this->y=y;
     }
-    pair<long long,long long> half = GeoSeries(x,n/2);
-    long long exp = half.first;
-    long long sum = half.second;
-
-    if(n%2==0) return{(exp*exp)%M,((1+exp)*sum)%M};
-    else return{(x*exp*exp)%M,(x+x*(1+exp)*sum)%M};
-}
-
+    bool operator<(const Info a)const{
+        if(this->dist == a.dist){
+            if(this->x==a.x){
+                return this->y < a.y;
+            }
+            return this->x < a.x;
+        }
+        return this->dist<a.dist;
+    }
+};
 int main(){
     int tc;
     cin>>tc;
     while(tc--){
-
-        cin>>M>>N>>K;
-        for(int i=0;i<M;i++){
+        int m,n,k;
+        cin>>m>>n>>k;
+        priority_queue<Info> stores;
+        for(int i =0;i<m;i++){
             int x,y;
             cin>>x>>y;
-
+            double dist = sqrt(x*x+y*y);
+            stores.push(Info(dist,x,y));
+            if( stores.size()>k) stores.pop();
         }
-        for(int i=0;i<N;i++){
-
+        for(int i =0;i<n;i++){
+            int x,y;
+            cin>>x>>y;
+            double dist = sqrt(x*x+y*y);
+            stores.push(Info(dist,x,y));
+            stores.pop();
+            cout<< stores.top().x<<" "<<stores.top().y<<endl;
         }
+
     }
 }
