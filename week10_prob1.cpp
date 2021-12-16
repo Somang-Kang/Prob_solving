@@ -8,13 +8,13 @@ vector<int> room[10000];
 int reved(int x){
     string str = to_string(x);
     if(str.length()==3){
-        str = str+"0";
+        str = "0"+str;
     }
     else if(str.length()==2){
-        str = str+"00";
+        str = "00"+str;
     }
     else if(str.length()==1){
-        str = str+"000";
+        str = "000"+str;
     }
     reverse(str.begin(),str.end());
     return stoi(str);
@@ -24,21 +24,23 @@ int main(){
         if(i!=0){
             room[i].push_back(i-1);
         }
-        else if(i!=9999){
+        if(i!=9999){
             room[i].push_back(i+1);
         }
         int num = reved(i);
         room[i].push_back(num);
+
     }
     int visited[10000];
-    for(int i =0;i<10000;i++){
-        visited[i]=-1;
-    }
+
     queue<int> q;
 
     int tc;
     cin>>tc;
     while(tc--){
+        for(int i =0;i<10000;i++){
+            visited[i]=-1;
+        }
         int s,d;
         cin>>s>>d;
         q.push(s);
