@@ -7,7 +7,6 @@
 using namespace std;
 vector<int> v[101];
 
-
 class Ball{
 public:
     bool isVisited[101] = {false,};
@@ -16,7 +15,6 @@ public:
     void DFS(int n){
         isVisited[n] = true;
         cnt++;
-
         for(int i =0;i<v[n].size();i++){
             if(isVisited[v[n][i]]== false){
                 DFS(v[n][i]);
@@ -25,8 +23,6 @@ public:
     }
 
 };
-
-
 
 int main(){
     int tc;
@@ -38,10 +34,7 @@ int main(){
             int n,m;
             cin>>n>>m;
             v[n].push_back(m);
-
-
         }
-
         for(int i = 1;i<=N;i++){
             Ball* ball = new Ball();
             ball->DFS(i);

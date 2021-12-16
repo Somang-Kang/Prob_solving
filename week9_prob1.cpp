@@ -21,9 +21,7 @@ int main(){
     cin>>tc;
     while(tc--){
         cin>>X>>N>>M;
-
         pair<long long,long long> ans = GeoSeries(X,N);
-
         cout<<ans.second<<endl;
     }
 }

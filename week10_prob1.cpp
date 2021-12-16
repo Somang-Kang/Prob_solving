@@ -1,64 +1,63 @@
-//
-// Created by 강소망 on 2021/11/05.
-//
+
 #include <iostream>
-#include <string>
-#include <algorithm>
 #include <vector>
-
+#include <queue>
 using namespace std;
-int result;
-int cnt =0;
-int reverseV(int n){
-    string s = to_string(n);
-    reverse(s.begin(), s.end());
-    if(n<1000 &&n>99){
-        s.push_back('0');
-    }
-    else if(n<100&&n>9){
-        s.push_back('0');
-        s.push_back('0');
-    }
-    else if(n<10 && n>0){
-        s.push_back('0');
-        s.push_back('0');
-        s.push_back('0');
-    }
+vector<int> room[10000];
 
-
-    return atoi(s.c_str());
+int reved(int x){
+    string str = to_string(x);
+    if(str.length()==3){
+        str = str+"0";
+    }
+    else if(str.length()==2){
+        str = str+"00";
+    }
+    else if(str.length()==1){
+        str = str+"000";
+    }
+    reverse(str.begin(),str.end());
+    return stoi(str);
 }
-
-int RoomEscape(int n){
-    if(n==result){
-        return cnt;
-    }
-    int minusValue = n-1;
-    int plusValue = n+1;
-    int reverseValue = reverseV(n);
-    int value = abs(result-minusValue);
-    int returnValue = minusValue;
-    if(abs(result-plusValue)<value){
-        value = abs(result-plusValue);
-        returnValue = plusValue;
-    }
-    if(abs(result-reverseValue)<value){
-        returnValue = reverseValue;
-    }
-    cnt++;
-    RoomEscape(returnValue);
-
-}
-
 int main(){
+    for(int i = 0;i<10000;i++){
+        if(i!=0){
+            room[i].push_back(i-1);
+        }
+        else if(i!=9999){
+            room[i].push_back(i+1);
+        }
+        int num = reved(i);
+        room[i].push_back(num);
+    }
+    int visited[10000];
+    for(int i =0;i<10000;i++){
+        visited[i]=-1;
+    }
+    queue<int> q;
+
     int tc;
     cin>>tc;
     while(tc--){
-        int n;
-        cin>>n>>result;
+        int s,d;
+        cin>>s>>d;
+        q.push(s);
+        visited[s]=0;
+        while(!q.empty()){
+            int t = q.front();
+            q.pop();
+            for(int i = 0;i<room[t].size();i++){
+                if(visited[room[t][i]]==-1){
+                    q.push(room[t][i]);
+                    visited[room[t][i]]=visited[t]+1;
+                }
+                if(room[t][i]==d) {
+                    while(!q.empty()) q.pop();
+                    break;
+                }
+            }
+        }
+        cout<<visited[d]<<endl;
 
-        RoomEscape(n);
-        cout<<cnt<<" ";
-        cnt =0;
     }
 }
