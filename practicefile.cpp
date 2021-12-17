@@ -1,85 +1,51 @@
 #include <iostream>
-#include <vector>
 #include <queue>
 using namespace std;
-vector<int> room[10000];
 
-int reved(int x){
-    string str = to_string(x);
-    if(str.length()==3){
-        str = str+"0";
+
+struct Info{
+    int dist;
+    int x;
+    int y;
+
+    Info(int x,int y, int dist){
+        this->x=x;
+        this->dist=dist;
+        this->y=y;
     }
-    else if(str.length()==2){
-        str = str+"00";
+
+    bool operator<(const Info a)const{
+        if(this->dist==a.dist){
+            if(this->x==a.x){
+                return this->y<a.y;
+            }
+            return this->x<a.x;
+        }
+        return this->dist<a.dist;
     }
-    else if(str.length()==1){
-        str = str+"000";
-    }
-    return stoi(str);
-}
+};
+
+
 int main(){
-    for(int i = 0;i<10000;i++){
-        if(i!=0){
-            room[i].push_back(i-1);
-        }
-        else if(i!=9999){
-            room[i].push_back(i+1);
-        }
-        int num = reved(i);
-        room[i].push_back(num);
-    }
-    int visited[10000];
-    for(int i =0;i<10000;i++){
-        visited[i]=-1;
-    }
-    queue<int> q;
-
     int tc;
     cin>>tc;
     while(tc--){
-        int s,d;
-        cin>>s>>d;
-
-        q.push(s);
-        visited[s]=0;
-        while(!q.empty()){
-            int t = q.front();
-            q.pop();
-            for(int i = 0;i<room[t].size();i++){
-                if(visited[root[t][i]]==-1){
-                    q.push(root[t][i]);
-                    visited[root[t][i]]=visited[t]+1;
-                }
-                if(root[t][i]==d) break;
-            }
+        priority_queue<Info> q;
+        int m,n,k;
+        cin>>m>>n>>k;
+        for(int i=0;i<m;i++){
+            int x,y;
+            cin>>x>>y;
+            double dist = sqrt(x**2+y**2);
+            q.push(Info(x,y,dist));
         }
-        cout<<visited[d]<<endl;
-
+        for(int i=0;i<n;i++){
+            int x,y;
+            cin>>x>>y;
+            double dist = sqrt(x**2+y**2);
+            q.push(Info(x,y,dist));
+            q.pop();
+            cout<<q.top()->x<<" "<<q.top()->y<<" "<<q.top().dist<<endl;
+        }
     }
-
-}
-
-
-
-
-
-
-
-
-
-while (!q.empty()) {
-int cur = q.front();
-q.pop();
-
-for (int i = 0; i < road[cur].size(); i++) {
-if (check[road[cur][i]] == -1) {
-q.push(road[cur][i]);
-check[road[cur][i]] = check[cur] + 1;
-}
-if (road[cur][i] == B) {
-while (!q.empty())
-q.pop();
-break;
-}
-}
 }

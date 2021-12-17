@@ -6,10 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/Users/somang/CLionProjects/prob_solving/week10_prob1.cpp
+/Users/somang/CLionProjects/prob_solving/week7_prob2.cpp
 iostream
 -
-vector
+cmath
+-
+queue
+-
+iostream
 -
 queue
 -

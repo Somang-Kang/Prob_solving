@@ -77,27 +77,27 @@ include CMakeFiles/prob_1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/prob_1.dir/flags.make
 
-CMakeFiles/prob_1.dir/week10_prob1.cpp.o: CMakeFiles/prob_1.dir/flags.make
-CMakeFiles/prob_1.dir/week10_prob1.cpp.o: ../week10_prob1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/somang/CLionProjects/prob_solving/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/prob_1.dir/week10_prob1.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prob_1.dir/week10_prob1.cpp.o -c /Users/somang/CLionProjects/prob_solving/week10_prob1.cpp
+CMakeFiles/prob_1.dir/week7_prob2.cpp.o: CMakeFiles/prob_1.dir/flags.make
+CMakeFiles/prob_1.dir/week7_prob2.cpp.o: ../week7_prob2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/somang/CLionProjects/prob_solving/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/prob_1.dir/week7_prob2.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prob_1.dir/week7_prob2.cpp.o -c /Users/somang/CLionProjects/prob_solving/week7_prob2.cpp
 
-CMakeFiles/prob_1.dir/week10_prob1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prob_1.dir/week10_prob1.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/somang/CLionProjects/prob_solving/week10_prob1.cpp > CMakeFiles/prob_1.dir/week10_prob1.cpp.i
+CMakeFiles/prob_1.dir/week7_prob2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prob_1.dir/week7_prob2.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/somang/CLionProjects/prob_solving/week7_prob2.cpp > CMakeFiles/prob_1.dir/week7_prob2.cpp.i
 
-CMakeFiles/prob_1.dir/week10_prob1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prob_1.dir/week10_prob1.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/somang/CLionProjects/prob_solving/week10_prob1.cpp -o CMakeFiles/prob_1.dir/week10_prob1.cpp.s
+CMakeFiles/prob_1.dir/week7_prob2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prob_1.dir/week7_prob2.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/somang/CLionProjects/prob_solving/week7_prob2.cpp -o CMakeFiles/prob_1.dir/week7_prob2.cpp.s
 
 # Object files for target prob_1
 prob_1_OBJECTS = \
-"CMakeFiles/prob_1.dir/week10_prob1.cpp.o"
+"CMakeFiles/prob_1.dir/week7_prob2.cpp.o"
 
 # External object files for target prob_1
 prob_1_EXTERNAL_OBJECTS =
 
-prob_1: CMakeFiles/prob_1.dir/week10_prob1.cpp.o
+prob_1: CMakeFiles/prob_1.dir/week7_prob2.cpp.o
 prob_1: CMakeFiles/prob_1.dir/build.make
 prob_1: CMakeFiles/prob_1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/somang/CLionProjects/prob_solving/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable prob_1"
